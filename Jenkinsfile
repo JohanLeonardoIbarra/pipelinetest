@@ -1,10 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:22.13.0-alpine3.21' }
+    }
 
     stages {
-        stage('Hello') {
+        stage('test') {
             steps {
-                echo 'Hello World'
+                sh 'node ./index.js'
             }
         }
     }
